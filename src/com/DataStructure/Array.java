@@ -13,11 +13,14 @@ public class Array {
 
     public void print() {
         for (int i = 0; i < count; i++) {
-            System.out.print(Arrays.toString(items));
+            System.out.print(items[i] + " ");
         }
     }
 
     public void insert(int item) {
+        if (items.length == count) {
+            items = Arrays.copyOf(items, items.length * 2);
+        }
         items[count] = item;
         count++;
     }
