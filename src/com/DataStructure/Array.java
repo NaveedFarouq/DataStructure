@@ -33,6 +33,14 @@ public class Array {
             items[i] = items[i + 1];
         }
         count--;
+    }
 
+    public int indexOf(int item) {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] == item) {
+                return i;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 }
