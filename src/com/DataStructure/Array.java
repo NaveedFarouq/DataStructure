@@ -61,4 +61,12 @@ public class Array {
                 intersection.insert(item);
         return intersection;
     }
+
+    public void reverse() {
+        int[] newItems = new int[count];
+        for (int i = 0; i < count; i++) {
+            newItems[i] = items[count - i - 1];
+        }
+        System.out.println(Arrays.toString(newItems));
+    }
 }
