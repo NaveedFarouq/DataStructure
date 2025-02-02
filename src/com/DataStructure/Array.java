@@ -43,4 +43,13 @@ public class Array {
         }
         throw new IllegalArgumentException();
     }
+
+    public int maxNumber() {
+        int max = 0;
+        for (int item: items) {
+           if ( item > max)
+               max = item;
+        }
+        return max;
+    }
 }
