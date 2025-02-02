@@ -41,7 +41,8 @@ public class Array {
                 return i;
             }
         }
-        throw new IllegalArgumentException();
+//        throw new IllegalArgumentException();
+        return -1;
     }
 
     public int maxNumber() {
@@ -51,5 +52,13 @@ public class Array {
                max = item;
         }
         return max;
+    }
+
+    public Array intersect(Array other) {
+        var intersection = new Array(count);
+        for (int item : items)
+            if (other.indexOf(item) >= 0)
+                intersection.insert(item);
+        return intersection;
     }
 }

@@ -12,7 +12,14 @@ public class Main {
         number.insert(30);
         number.insert(40);
 
-        System.out.println(number.maxNumber());
+        Array number2 = new Array(3);
+        number2.insert(10);
+        number2.insert(20);
+        number2.insert(60);
+        number2.insert(80);
+
+        number2.intersect(number2);
+
         System.out.println();
     }
 }
