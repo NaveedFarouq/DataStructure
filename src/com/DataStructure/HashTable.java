@@ -216,4 +216,16 @@ public class HashTable {
         return null;
     }
 
+    // checking is array of integers contains duplicates
+    public boolean containtsDuplicate(int[] numbers){
+        HashSet<Integer> set = new HashSet<>();
+        for (int i: numbers){
+            if (set.contains(i)){
+                return true;
+            }
+            set.add(i);
+        }
+        return false;
+    }
+
 }

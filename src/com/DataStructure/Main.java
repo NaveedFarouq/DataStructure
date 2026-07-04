@@ -10,9 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
-        int[] arr = {12,3, 2, 7, 11, 15};
-        int[] i = hashTable.twoSum(arr, 9);
-        System.out.println(i.toString());
+        int[] arr = {12, 2, 7, 11, 3, 15, 12};
+        System.out.println(hashTable.containtsDuplicate(arr));
     }
 
 
