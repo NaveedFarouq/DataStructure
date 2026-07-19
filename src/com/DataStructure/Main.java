@@ -9,9 +9,15 @@ public class Main {
 
 
     public static void main(String[] args) {
-        HashTable hashTable = new HashTable();
-        int[] arr = {12, 2, 7, 11, 3, 15, 12};
-        System.out.println(hashTable.containtsDuplicate(arr));
+       var tree = new Tree();
+       tree.insert(10);
+        tree.insert(5);
+        tree.insert(3);
+       tree.insert(15);
+       tree.insert(26);
+
+       System.out.println(tree.find(29));
+
     }
 
 
