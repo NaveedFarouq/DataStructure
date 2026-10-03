@@ -80,10 +80,10 @@ public class Tree {
         traversePreOrder(root.left);
         traversePreOrder(root.right);
     }
+
     public void traverseInOrder(){
         traverseInOrder(root);
     }
-
     private void traverseInOrder(Node root){
         if (root == null){
             return;
@@ -93,10 +93,10 @@ public class Tree {
         traverseInOrder(root.right);
 
     }
+
     public void traversePostOrder(){
         traversePostOrder(root);
     }
-
     private void traversePostOrder(Node root){
         if (root == null){
             return;
@@ -119,5 +119,37 @@ public class Tree {
         }
         return 1 + Math.max(
                 height(root.left), height(root.right));
+    }
+
+    public int min(){
+        return min(root);
+    }
+    // O(n)
+    // this work for binary tree
+    private int min(Node root){
+        // if node is leaf node then return its value
+        if (root.left == null && root.right == null){
+            return root.value;
+        }
+
+        var left = min(root.left);
+        var right = min(root.right);
+
+        return Math.min(Math.min(left, right), root.value);
+    }
+
+    public int minValueInBinarySearchTree(){
+        return minValueInBinarySearchTree(root);
+    }
+    //O(log n)
+    private int minValueInBinarySearchTree(Node root){
+        if (root == null){
+            throw new IllegalArgumentException();
+        }
+        var current = root;
+        while (current.left != null){
+            current = current.left;
+        }
+        return current.value;
     }
 }
