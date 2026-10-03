@@ -21,6 +21,7 @@ public class Tree {
     public void insert(int value){
         // create new node with the value passed
         var node = new Node(value);
+        //base check
         // if no root then new node as root.
         if (root == null){
             root = node;
@@ -50,7 +51,9 @@ public class Tree {
     }
 
     public int find(int value) {
+        // put a pointer to the root element
         var current = root;
+        // while curren pointed item/node is not null
         while (current != null) {
             if (current.value == value) {
                 return current.value;
@@ -60,6 +63,47 @@ public class Tree {
                 current = current.right;
             }
         }
+        // if value cannot be found then return -1
         return -1;
+    }
+
+    //overloading the below method to hide implementation details
+    public void traversePreOrder(){
+        traversePreOrder(root);
+    }
+
+    private void traversePreOrder(Node root){
+        if (root == null){
+            return;
+        }
+        System.out.println(root.value);
+        traversePreOrder(root.left);
+        traversePreOrder(root.right);
+    }
+    public void traverseInOrder(){
+        traverseInOrder(root);
+    }
+
+    private void traverseInOrder(Node root){
+        if (root == null){
+            return;
+        }
+        traverseInOrder(root.left);
+        System.out.println(root.value);
+        traverseInOrder(root.right);
+
+    }
+    public void traversePostOrder(){
+        traversePostOrder(root);
+    }
+
+    private void traversePostOrder(Node root){
+        if (root == null){
+            return;
+        }
+        traversePostOrder(root.left);
+        traversePostOrder(root.right);
+        System.out.println(root.value);
+
     }
 }

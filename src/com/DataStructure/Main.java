@@ -10,14 +10,23 @@ public class Main {
 
     public static void main(String[] args) {
        var tree = new Tree();
+       tree.insert(7);
+       tree.insert(4);
+       tree.insert(9);
+       tree.insert(1);
+       tree.insert(6);
+       tree.insert(8);
        tree.insert(10);
-        tree.insert(5);
-        tree.insert(3);
-       tree.insert(15);
-       tree.insert(26);
+       tree.traversePostOrder();
 
-       System.out.println(tree.find(29));
+    }
 
+    public static int factorial(int n ){
+        // base check
+        if (n == 0){
+            return 1;
+        }
+        return n * factorial(n -1);
     }
 
 
