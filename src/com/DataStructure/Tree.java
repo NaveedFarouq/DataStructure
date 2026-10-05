@@ -1,5 +1,7 @@
 package com.DataStructure;
 
+import java.util.ArrayList;
+
 public class Tree {
 
     public class Node{
@@ -177,5 +179,26 @@ public class Tree {
 
         return isBinarySearchTree(root.left, min, root.value -1) &&
                 isBinarySearchTree(root.right, root.value + 1, max);
+    }
+
+    public ArrayList<Integer> nodeAtKDistanceInTree(int distance){
+        // initiating array list to populate with the tree nodes
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        nodeAtKDistanceInTree(root, distance, list);
+        return list;
+    }
+
+    private void nodeAtKDistanceInTree(Node root, int distance, ArrayList<Integer> list){
+        if (root == null){
+            return;
+        }
+        if (distance == 0){
+            // populating list with node from the tree
+            list.add(root.value);
+            return;
+        }
+        //recursions
+        nodeAtKDistanceInTree(root.left, distance - 1, list);
+        nodeAtKDistanceInTree(root.right, distance - 1, list);
     }
 }
