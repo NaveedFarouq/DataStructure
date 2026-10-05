@@ -210,5 +210,17 @@ public class Tree {
         }
     }
 
+    public int sizeOfTree(){
+        return sizeOfTree(root);
+    }
+    private int sizeOfTree(Node root){
+        if (root == null){
+            return 0;
+        }
+        if (root.left == null && root.right == null){
+            return 1;
+        }
 
+        return 1 + sizeOfTree(root.left) + sizeOfTree(root.right);
+    }
 }
