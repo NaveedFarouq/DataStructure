@@ -1,6 +1,7 @@
 package com.DataStructure;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Tree {
 
@@ -72,6 +73,7 @@ public class Tree {
     //overloading the below method to hide implementation details
     public void traversePreOrder(){
         traversePreOrder(root);
+//        traversePreOrderIteratively(root);
     }
 
     private void traversePreOrder(Node root){
@@ -83,8 +85,28 @@ public class Tree {
         traversePreOrder(root.right);
     }
 
+    private void traversePreOrderIteratively(Node root){
+        if (root == null){
+            return;
+        }
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Node temp = stack.pop();
+            System.out.println(temp.value);
+            if (temp.right != null){
+                stack.push(temp.right);
+            }
+            if (temp.left != null){
+                stack.push(temp.left);
+            }
+
+        }
+    }
+
     public void traverseInOrder(){
         traverseInOrder(root);
+//        traverseInOrderIteratively(root);
     }
     private void traverseInOrder(Node root){
         if (root == null){
@@ -96,8 +118,27 @@ public class Tree {
 
     }
 
+    private void traverseInOrderIteratively(Node root){
+        if (root == null){
+            return;
+        }
+        Stack<Node> stack = new Stack<>();
+        Node temp = root;
+        while (!stack.isEmpty() || temp != null){
+            if (temp != null){
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+                temp = stack.pop();
+                System.out.println(temp.value);
+                temp = temp.right;
+            }
+        }
+    }
+
     public void traversePostOrder(){
         traversePostOrder(root);
+//        traversePostOrderIteratively(root);
     }
     private void traversePostOrder(Node root){
         if (root == null){
@@ -107,6 +148,29 @@ public class Tree {
         traversePostOrder(root.right);
         System.out.println(root.value);
 
+    }
+
+    private void traversePostOrderIteratively(Node root){
+        var current = root;
+        Stack<Node> stack = new Stack<>();
+        while (current != null || !stack.isEmpty()){
+            if (current != null){
+                stack.push(current);
+                current = current.left;
+            } else {
+                Node temp = stack.peek().right;
+                if (temp == null){
+                    temp = stack.pop();
+                    System.out.println(temp.value);
+                    while (!stack.isEmpty() && temp == stack.peek().right){
+                        temp = stack.pop();
+                        System.out.println(temp.value);
+                    }
+                } else {
+                    current = temp;
+                }
+            }
+        }
     }
 
     public int height(){
@@ -237,5 +301,21 @@ public class Tree {
         }
 
         return 1 + sizeOfTree(root.left) + sizeOfTree(root.right);
+    }
+
+    //overloading the below method to hide implementation details
+    public boolean treeContains(int value){
+        return treeContains(root, value);
+    }
+
+    private boolean treeContains(Node root, int value){
+        if (root == null){
+            return false;
+        }
+        if (root.value == value){
+            return true;
+        }
+        return treeContains(root.left, value) || treeContains(root.right, value);
+
     }
 }

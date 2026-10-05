@@ -13,7 +13,7 @@ public class Main {
        tree.insert(6);
        tree.insert(8);
        tree.insert(10);
-       System.out.println(tree.maxValueInBinarySearchTree());
+       tree.traversePostOrder();
     }
 
     public static int factorial(int n ){
