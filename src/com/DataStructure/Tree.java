@@ -155,6 +155,21 @@ public class Tree {
         return current.value;
     }
 
+    public int maxValueInBinarySearchTree(){
+        return maxValueInBinarySearchTree(root);
+    }
+
+    private int maxValueInBinarySearchTree(Node root){
+        if (root == null){
+            throw new IllegalArgumentException();
+        }
+        var current = root;
+        while (current.right != null){
+            current = current.right;
+        }
+        return current.value;
+    }
+
     public boolean equals(Tree other){
         return equals(root, other.root);
     }
