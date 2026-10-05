@@ -201,4 +201,14 @@ public class Tree {
         nodeAtKDistanceInTree(root.left, distance - 1, list);
         nodeAtKDistanceInTree(root.right, distance - 1, list);
     }
+
+    public void travserLevelOrder(){
+
+        for (int i = 0; i <= height(); i++){
+            for (var value : nodeAtKDistanceInTree(i))
+                System.out.println(value);
+        }
+    }
+
+
 }

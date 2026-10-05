@@ -13,8 +13,7 @@ public class Main {
        tree.insert(6);
        tree.insert(8);
        tree.insert(10);
-       System.out.println(tree.nodeAtKDistanceInTree(2));
-
+       tree.travserLevelOrder();
     }
 
     public static int factorial(int n ){
