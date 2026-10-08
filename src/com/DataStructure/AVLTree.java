@@ -5,6 +5,7 @@ public class AVLTree {
     private Node root;
 
     private class Node {
+        private int height;
         private int value;
         private Node left;
         private Node right;
@@ -31,7 +32,19 @@ public class AVLTree {
         } else {
             root.right = insert(root.right, value);
         }
+
+        root.height = Math.max(height(root.left), height(root.right)) + 1;
+        int balanceFactor = height(root.left) - height(root.right);
+        if (balanceFactor > 1){
+            System.out.println("left heavy");
+        } else if (balanceFactor < -1) {
+            System.out.println("right heavy");
+        }
         return root;
+    }
+
+    private int height(Node node){
+        return (node == null) ? -1 : node.height;
     }
 
 }
